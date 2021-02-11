@@ -33,10 +33,12 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Building Project
-          ../build.sh
+          pwd
+          
           
       # Runs Tests
       - name: Run Tests
         run: |
           echo Running Tests
-          ../test.sh
+          cd
+          pwd
