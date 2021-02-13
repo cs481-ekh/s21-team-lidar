@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\wesle\Documents\Livox-SDK\sample_cc\hub\lds_hub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\wesle\Documents\Livox-SDK\sample_cc\hub\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\wesle\Documents\Livox-SDK\sample_cc\hub\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7088CF5D-FBE5-38F2-B684-7996E537AD32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

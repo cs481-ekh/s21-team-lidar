@@ -1,0 +1,10 @@
+^C:\USERS\WESLE\DOCUMENTS\LIVOX-SDK\BUILD\CMAKEFILES\1DA3F8F653DE653AEA7269F2F775AADF\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/wesle/Documents/Livox-SDK -BC:/Users/wesle/Documents/Livox-SDK/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/wesle/Documents/Livox-SDK/build/livox_sdk.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
