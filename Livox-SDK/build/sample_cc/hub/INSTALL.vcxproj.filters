@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\wesle\Documents\Livox-SDK\build\CMakeFiles\51578d52cb215a0aef533d4166b8e36f\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{57729184-1192-3071-9B68-E34B2AAB6AC4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

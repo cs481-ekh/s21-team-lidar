@@ -1,0 +1,14 @@
+﻿  Building Custom Rule C:/Users/wesle/Documents/Livox-SDK/sample_cc/lidar_utc_sync/CMakeLists.txt
+  main.cpp
+C:\Users\wesle\Documents\Livox-SDK\sdk_core\include\third_party\cmdline\cmdline.h(550,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  lds_lidar.cpp
+C:\Users\wesle\Documents\Livox-SDK\sample_cc\lidar_utc_sync\lds_lidar.cpp(282,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : see declaration of 'strcpy'
+  synchro.cpp
+C:\Users\wesle\Documents\Livox-SDK\sample_cc\lidar_utc_sync\synchro.cpp(131,1): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(338): message : see declaration of 'strncpy'
+C:\Users\wesle\Documents\Livox-SDK\sample_cc\lidar_utc_sync\synchro.cpp(132,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(2263): message : see declaration of 'sscanf'
+C:\Users\wesle\Documents\Livox-SDK\sample_cc\lidar_utc_sync\synchro.cpp(237,46): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  Generating Code...
+  lidar_utc_sync.vcxproj -> C:\Users\wesle\Documents\Livox-SDK\build\sample_cc\lidar_utc_sync\Debug\lidar_utc_sync.exe
