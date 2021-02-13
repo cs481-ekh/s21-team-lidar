@@ -33,7 +33,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Building Project
-          ./.github/build.sh
+          ./build.cmd
           
           
       # Runs Tests
