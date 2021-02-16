@@ -44,5 +44,6 @@ jobs:
       - name: Run Tests
         run: |
           echo Running Tests
+          ./test.cmd
           cd
           pwd
