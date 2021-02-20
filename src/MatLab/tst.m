@@ -1,21 +1,51 @@
 function ptcell = tst()
 %z = csvread('C:\Users\wesle\Documents\PointPillars\lvxsample2.csv' , 1, 7);
-[Timestamp, X1, Y1, Z1, Reflectivity] = importfile('H:\Livox\csv\sample 1.csv' , 2);
-Timestamp(1)
-fps = 23617;
-numberOfElements = numel(Timestamp);
-numberOfFrames = fix(numberOfElements / fps); 
+    [Timestamp, X1, Y1, Z1, Reflectivity] = importfile('C:\Users\wesle\Documents\PointPillars\lvxsample2-1.csv' , 2);
+    hundredmsfactor = 100000000;
+    fps = 23617;
+    numberOfElements = numel(Timestamp);
+    numberOfFrames = fix(numberOfElements / fps); 
 
-ptcell = cell(numberOfFrames,1);
-for v = 1.0:1:numberOfFrames
-    points = [X1((v-1)*(fps)+1:v*fps),Y1((v-1)*(fps)+1:v*fps),Z1((v-1)*(fps)+1:v*fps)];
-    ptCloud = pointCloud(points, 'Intensity' , Reflectivity((v-1)*(fps)+1:v*fps));
-    ptcell{v,1} = ptCloud; 
-end
-% points = [X1(1:360), Y1(1:360), Z1(1:360)];
-% ptCloud = pointCloud(points, 'Intensity' , Reflectivity(1:360));
-
-%pcshow(ptCloud);
+    ptcell = cell(numberOfFrames,1);
+    framecell = cell(40000,1);
+%     for v = 1.0:1:numberOfFrames
+%         points = [X1((v-1)*(fps)+1:v*fps),Y1((v-1)*(fps)+1:v*fps),Z1((v-1)*(fps)+1:v*fps)];
+%         ptCloud = pointCloud(points, 'Intensity' , Reflectivity((v-1)*(fps)+1:v*fps));
+%         ptcell{v,1} = ptCloud; 
+%     end
+    chunkTime = Timestamp(1);
+    ptInFrameCount = 1;
+    frameMember = 1;
+    points = zeros(40000, 3); 
+    reflex = zeros(40000, 1);
+    for v = 1.0:1:numberOfElements
+      if (((Timestamp(v) - chunkTime) < hundredmsfactor))
+          points(ptInFrameCount,1:3) = [X1(v) Y1(v), Z1(v)];
+          reflex(ptInFrameCount,1) = [Reflectivity(v)];
+          ptInFrameCount = ptInFrameCount + 1;
+      else
+         ptCloud = pointCloud(points, 'Intensity', reflex);
+         ptcell{frameMember, 1} = ptCloud;
+         ptInFrameCount = 1;
+         frameMember = frameMember + 1;
+         points = zeros(40000, 3); 
+         reflex = zeros(40000, 1);
+         chunkTime = Timestamp(v);
+         points(ptInFrameCount,1:3) = [X1(v), Y1(v), Z1(v)];
+         reflex(ptInFrameCount,1) = [Reflectivity(v)];
+         ptInFrameCount = ptInFrameCount + 1;
+      end
+        
+    end
+    
+%     for v = 1.0:1:(numberOfFrames-1)
+%         for k = v+1:1:numberOfFrames
+%             if (ptcell{v,1} == ptcell{k,1})
+%                 disp(k,v);
+%             end
+%         end
+%     end
+    
 end
 
 function [Timestamp, X1, Y1, Z1, Reflectivity] = importfile(filename, dataLines)
