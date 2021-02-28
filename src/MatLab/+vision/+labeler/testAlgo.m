@@ -1,37 +1,42 @@
 % This class defines a template for creating a custom label automation
-% algorithm, to be used in lidarLabeler. To access help for this class,
-% enter the following at the MATLAB command prompt:
+% algorithm with a temporal context, to be used in the Video Labeler or
+% Ground Truth Labeler App.
+%
+% To access help for these classes, enter the following at the MATLAB
+% command prompt:
 %
 %   >> doc vision.labeler.AutomationAlgorithm
+%   >> doc vision.labeler.mixin.Temporal
 %
-% For reference, see the following AutomationAlgorithm class:
+% For reference, see the following AutomationAlgorithm classes:
 %
-%   >> edit lidar.labeler.MultiObjectLidarTracking
+%   >> edit vision.labeler.PointTracker
+%   >> edit vision.labeler.TemporalInterpolator
 %
 %
-% To use this algorithm from within the lidarLabeler App, follow the steps
-% outlined below and complete the class definition. Then, save this file as
-% follows.
+% To use this algorithm from within the Video Labeler or Ground Truth
+% Labeler App, follow the steps outlined below and complete the class
+% definition. Then, save this file as follows.
 %
-%  Create a +vision/+labeler folder within a folder that is already on the
-%  MATLAB path. For example, if the folder /local/MyProject is on the
-%  MATLAB path, then create a +vision/+labeler folder hierarchy as follows:
+%  Create a +vision/+labeler folder within a folder that is already
+%  on the MATLAB path. For example, if the folder /local/MyProject is on
+%  the MATLAB path, then create a +vision/+labeler folder hierarchy as
+%  follows:
 %
-%           projectFolder = fullfile('local','MyProject'); automationFolder
-%           = fullfile('+vision','+labeler');
+%           projectFolder = fullfile('local','MyProject');
+%           automationFolder = fullfile('+vision','+labeler');
 %
 %           mkdir(projectFolder, automationFolder)
 %
 %  Saving the file to the package directory is required to use your custom
-%  algorithm from within the labeling apps. You can add a folder to the
-%  path using the ADDPATH function.
+%  algorithm from within the Video Labeler or Ground Truth Labeler app. You
+%  can add a folder to the path using the ADDPATH function.
 %
 %  Save your algorithm class in the folder created in step 1. Refresh the
-%  algorithm list from within the app to start using your custom algorithm.
+%  algorithm list from within the Video Labeler or Ground Truth Labeler app
+%  to start using your custom algorithm.
 
-classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
-    
-    %   Copyright 2020 The MathWorks, Inc.
+classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm & vision.labeler.mixin.Temporal
     
     %----------------------------------------------------------------------
     % Step 1: Define required properties describing the algorithm. This
@@ -39,10 +44,10 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
     properties(Constant)
         
         % Name: Give a name for your algorithm.
-        Name = 'Example Custom Algorithm';
+        Name = 'testAlgo';
         
         % Description: Provide a one-line description for your algorithm.
-        Description = 'This is an example of a custom automation algorithm.';
+        Description = 'Test algorithm for trials.';
         
         % UserDirections: Provide a set of directions that are displayed
         %                 when this algorithm is invoked. The directions
@@ -54,6 +59,9 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
             'tasks. This AutomationAlgorithm is a template for creating ' ...
             'user-defined automation algorithms. Below are typical steps' ...
             'involved in running an automation algorithm.'], ...
+            ['ROI Selection: Draw an ROI.  In order to import previously ' ...
+            'labeled ROI''s select them (click for a single ROI, ' ...
+            'Ctrl+Click for multiple ROI''s) prior to Automation.'], ...
             ['Run: Press RUN to run the automation algorithm. '], ...
             ['Review and Modify: Review automated labels over the interval ', ...
             'using playback controls. Modify/delete/add ROIs that were not ' ...
@@ -85,29 +93,48 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
     end
     
     %----------------------------------------------------------------------
-    % Note: this method needs to be included for lidarLabeler app to
-    % recognize it as using pointcloud
+    % Step 3: Define methods used for setting up the algorithm.
     methods (Static)
-        % This method is static to allow the apps to call it and check the
-        % signal type before instantiation. When users refresh the
-        % algorithm list, we can quickly check and discard algorithms for
-        % any signal that is not support in a given app.
         
+        % a) Use the checkSignalType method to specify whether a signal
+        %    type is valid for the algorithm. This method is invoked for
+        %    the selected signal to determine whether it
+        %    is valid for the specified algorithm. Additionally, this
+        %    method is used to cross check that the label definitions
+        %    correspond to the correct signal type.
+        %
+        %    For more help,
+        %    >> doc vision.labeler.AutomationAlgorithm.checkSignalType
+        %
         function isValid = checkSignalType(signalType)
             
-            isValid = (signalType == vision.labeler.loading.SignalType.PointCloud);
+            disp('Executing checkSignalType')
+            
+            %--------------------------------------------------------------
+            % Place your code here
+            %--------------------------------------------------------------
+            
+            % Sample code for Image signal type:
+            % isValid = (signalType == vision.labeler.loading.SignalType.Image);
+            
+            % Sample code for PointCloud signal type:
+            % isValid = (signalType == vision.labeler.loading.SignalType.PointCloud);
             
         end
         
     end
     
-    %----------------------------------------------------------------------
-    % Step 3: Define methods used for setting up the algorithm.
     methods
-        % a) Use the checkLabelDefinition method to specify whether a label
+        
+        % b) Use the checkLabelDefinition method to specify whether a label
         %    definition is valid for the algorithm. This method is invoked
         %    on each ROI and Scene label definition to determine whether it
         %    is valid for the specified algorithm.
+        %
+        %    Valid label definitions for Image SignalType include
+        %    Rectangle, Line, and PixelLabel. Valid label definitions for
+        %    PointCloud SignalType are limited only to Cuboid label
+        %    definitions.
         %
         %    For more help,
         %    >> doc vision.labeler.AutomationAlgorithm.checkLabelDefinition
@@ -124,14 +151,16 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
             
         end
         
-        % b) Use the checkSetup method to specify whether the algorithm is
-        %    ready and all required set up is complete. If your algorithm
-        %    requires no setup from the user, remove this method.
+        % c) Use the checkSetup method to specify whether the algorithm is
+        %    ready and all required set up is complete. For example, use
+        %    this method to check if the user has drawn an initial ROI
+        %    label for tracking algorithms. If your algorithm requires no
+        %    setup from the user, remove this method.
         %
         %    For more help,
         %    >> doc vision.labeler.AutomationAlgorithm.checkSetup
         %
-        function isReady = checkSetup(algObj)
+        function isReady = checkSetup(algObj, labelsToAutomate)
             
             disp('Executing checkSetup')
             
@@ -143,7 +172,7 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
             
         end
         
-        % c) Optionally, specify what settings the algorithm requires by
+        % d) Optionally, specify what settings the algorithm requires by
         %    implementing the settingsDialog method. This method is invoked
         %    when the user clicks the Settings button. If your algorithm
         %    requires no settings, remove this method.
@@ -176,9 +205,9 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
         %    For more help,
         %    >> doc vision.labeler.AutomationAlgorithm.initialize
         %
-        function initialize(algObj, I)
+        function initialize(algObj, I, labelsToAutomate)
             
-            disp('Executing initialize on the first image frame')
+            disp(['Executing initialize on the first image frame at ' char(seconds(algObj.CurrentTime))])
             
             %--------------------------------------------------------------
             % Place your code here
@@ -190,16 +219,17 @@ classdef MyCustomAlgorithm < vision.labeler.AutomationAlgorithm
         
         % b) Specify the run method to process an image frame and execute
         %    the algorithm. Algorithm execution begins at the first image
-        %    frame and is invoked on all image frames selected for
-        %    automation. Algorithm execution can produce a set of labels
-        %    which are to be returned in autoLabels.
+        %    frame in the interval and is sequentially invoked till the
+        %    last image frame in the interval. Algorithm execution can
+        %    produce a set of labels which are to be returned in
+        %    autoLabels.
         %
         %    For more help,
         %    >> doc vision.labeler.AutomationAlgorithm.run
         %
         function autoLabels = run(algObj, I)
             
-            disp('Executing run on image frame')
+            disp(['Executing run on image frame at ' char(seconds(algObj.CurrentTime))])
             
             %--------------------------------------------------------------
             % Place your code here
