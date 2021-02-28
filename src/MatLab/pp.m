@@ -1,5 +1,5 @@
 function success = pp() 
-    outputFolder = fullfile('H:\Livox\Point Pillars');
+    outputFolder = fullfile('C:\Users\andres\Desktop\School STUFF\Spring21\cs481/trainedPointPillars');
     pretrainedNetURL = 'https://ssd.mathworks.com/supportfiles/lidar/data/trainedPointPillars.zip';
 
     doTraining = false;

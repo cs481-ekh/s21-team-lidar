@@ -19,4 +19,4 @@ end
 % 
 % ldc
 
-lidarLabeler('C:\Users\andres\Desktop\School STUFF\Spring21\cs481\sample 1 pcd')
+groundTruthLabeler('C:\Users\andres\Desktop\School STUFF\Spring21\cs481\sample 1 pcd')
