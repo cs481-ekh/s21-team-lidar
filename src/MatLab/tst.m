@@ -1,6 +1,6 @@
-
+function ptcell = tst()
 %z = csvread('C:\Users\wesle\Documents\PointPillars\lvxsample2.csv' , 1, 7);
-    [Timestamp, X1, Y1, Z1, Reflectivity] = importfile('C:\Users\wesle\Documents\PointPillars\lvxsample2.csv' , 2);
+    [Timestamp, X1, Y1, Z1, Reflectivity] = importfile('C:\Users\wesle\Documents\PointPillars\lvxsample2-1.csv' , 2);
     hundredmsfactor = 100000000;
     fps = 23617;
     numberOfElements = numel(Timestamp);
@@ -38,7 +38,6 @@
       
     end
     
-    pcwrite(ptcell{1,1},"sample2_10.pcd");
 %     for v = 1.0:1:(numberOfFrames-1)
 %         for k = v+1:1:numberOfFrames
 %             if (ptcell{v,1} == ptcell{k,1})
@@ -47,7 +46,7 @@
 %         end
 %     end
     
-
+end
 
 function [Timestamp, X1, Y1, Z1, Reflectivity] = importfile(filename, dataLines)
 %IMPORTFILE Import data from a text file

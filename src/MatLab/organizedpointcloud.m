@@ -1,3 +1,4 @@
+function newMatrix = organizedpointcloud()
 x = tst();
 
 width = 1024*6.5;
@@ -27,4 +28,6 @@ for cloudnum = 1:1.0:size(x,1)
     end 
     ptCloud = pointCloud(points, 'Intensity', intensityMap);
     newMatrix{1,cloudnum} = ptCloud;
+end
+
 end
