@@ -10,7 +10,7 @@ function success = pp()
     lidarURL = 'https://www.mathworks.com/supportfiles/lidar/data/WPI_LidarData.tar.gz';
     
     lidarData = organizedpointcloud;
-    ptcellArrayToPCD(lidarData,"C:\Users\wesle\Documents\PointPillars\InputData","opc");
+   
 
     load('WPI_LidarGroundTruth.mat','bboxGroundTruth');
     Labels = timetable2table(bboxGroundTruth);

@@ -1,13 +1,13 @@
-function newMatrix = organizedpointcloud()
 x = tst();
 
-width = 1024*6.5;
-height = 64*6.5;
+width = 1024*5;
+height = 64*5;
 
-points = zeros(height,width,3);
-intensityMap = zeros(height,width);
-newMatrix = cell(1,size(x,1));
+
+
 for cloudnum = 1:1.0:size(x,1)
+    points = zeros(height,width,3);
+    intensityMap = zeros(height,width);
     y = x{cloudnum,1};
     XResolution = abs(y.XLimits(2) - y.XLimits(1)) / width;
     YResolution = abs(y.YLimits(2) - y.YLimits(1)) / height;
@@ -27,7 +27,9 @@ for cloudnum = 1:1.0:size(x,1)
         intensityMap(M,N) = y.Intensity(v);
     end 
     ptCloud = pointCloud(points, 'Intensity', intensityMap);
-    newMatrix{1,cloudnum} = ptCloud;
+    x{cloudnum,1} = [];
+    ptCloudToPCD(ptCloud, "C:\Users\wesle\Documents\PointPillars\InputData", "Outside_" + cloudnum);
+    
 end
 
-end
+
