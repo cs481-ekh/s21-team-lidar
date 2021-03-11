@@ -1,5 +1,5 @@
 function success = pp() 
-    outputFolder = fullfile('C:\Users\wesle\Documents\PointPillars');
+    outputFolder = fullfile('C:\Users\andres\Documents\PointPillars');
     pretrainedNetURL = 'https://ssd.mathworks.com/supportfiles/lidar/data/trainedPointPillars.zip';
 
     doTraining = false;

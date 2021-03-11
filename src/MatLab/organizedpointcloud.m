@@ -28,7 +28,7 @@ for cloudnum = 1:1.0:size(x,1)
     end 
     ptCloud = pointCloud(points, 'Intensity', intensityMap);
     x{cloudnum,1} = [];
-    ptCloudToPCD(ptCloud, "C:\Users\wesle\Documents\PointPillars\InputData", "Outside_" + cloudnum);
+    ptCloudToPCD(ptCloud, "C:\Users\andres\Documents\PointPillars\InputData", "Outside_" + cloudnum);
     
 end
 
