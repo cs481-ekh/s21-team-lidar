@@ -1,6 +1,6 @@
-function ptcell = tst()
+function ptcell = tst(filepath)
 %z = csvread('C:\Users\wesle\Documents\PointPillars\lvxsample2.csv' , 1, 7);
-    [Timestamp, X1, Y1, Z1, Reflectivity] = importfile('C:\Users\andres\Documents\PointPillars\outside.csv' , 2);
+    [Timestamp, X1, Y1, Z1, Reflectivity] = importfile(filepath , 2);
     hundredmsfactor = 100000000;
     fps = 23617;
     numberOfElements = numel(Timestamp);
