@@ -4,8 +4,10 @@ width = 1024*5;
 height = 64*5;
 
 
+totalClouds = size(x,1);
+duration = seconds(totalClouds/10);
 
-for cloudnum = 1:1.0:size(x,1)
+for cloudnum = 1.0:1:size(x,1)
     points = zeros(height,width,3);
     intensityMap = zeros(height,width);
     y = x{cloudnum,1};
@@ -27,8 +29,12 @@ for cloudnum = 1:1.0:size(x,1)
         intensityMap(M,N) = y.Intensity(v);
     end 
     ptCloud = pointCloud(points, 'Intensity', intensityMap);
+    pcshow(ptCloud);
     x{cloudnum,1} = [];
-    ptCloudToPCD(ptCloud, "C:\Users\andres\Documents\PointPillars\InputData", "Outside_" + cloudnum);
+    %if (mod((cloudnum - 13),11) ~= 0)
+    name = sprintf( '%05d', cloudnum );
+    ptCloudToPCD(ptCloud, "C:\Users\wesle\Documents\PointPillars\InputData5", "LabRoom_" + name);
+    %end
     
 end
 

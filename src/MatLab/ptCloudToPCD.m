@@ -3,7 +3,7 @@ function ptCloudToPCD(ptCld, path, name)
 %   Converts a cell array of point clouds to a PCD sequence in a new folder
 %   ptcell : 
 mkdir(path);
-pcwrite(ptCld, path + '\' + name + '.pcd', 'Encoding', 'compressed')
+pcwrite(ptCld, path + '\' + name + '.pcd', 'Encoding', 'ascii')
 
 
 end
