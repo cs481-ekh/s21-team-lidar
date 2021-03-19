@@ -1,5 +1,6 @@
 function success = pp() 
-    outputFolder = fullfile('C:\Users\andres\Documents\PointPillars');
+    mkdir("C:\Livox\pp");
+    outputFolder = fullfile("C:\Livox\pp");
     pretrainedNetURL = 'https://ssd.mathworks.com/supportfiles/lidar/data/trainedPointPillars.zip';
 
     doTraining = false;
@@ -9,7 +10,7 @@ function success = pp()
     
     lidarURL = 'https://www.mathworks.com/supportfiles/lidar/data/WPI_LidarData.tar.gz';
     
-    lidarData = organizedpointcloud;
+    lidarData = readPCDtoCell("C:\Users\andres\Documents\PointPillars\InputData", "Outside");
    
 
     load('WPI_LidarGroundTruth.mat','bboxGroundTruth');
