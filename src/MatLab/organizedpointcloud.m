@@ -1,4 +1,4 @@
-x = tst();
+x = tst("C:\Livox\lvxsample2-1.csv");
 
 width = 1024*5;
 height = 64*5;
