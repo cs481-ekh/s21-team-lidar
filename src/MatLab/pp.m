@@ -1,6 +1,6 @@
 function success = pp() 
-    mkdir("C:\Livox\pp");
-    outputFolder = fullfile("C:\Livox\pp");
+    mkdir("C:\Users\andres\Documents\PointPillars");
+    outputFolder = fullfile("C:\Users\andres\Documents\PointPillars");
     pretrainedNetURL = 'https://ssd.mathworks.com/supportfiles/lidar/data/trainedPointPillars.zip';
 
     doTraining = false;
@@ -12,7 +12,7 @@ function success = pp()
     
     lidarData  = downloadWPIData(outputFolder, lidarURL);
 
-    load('WPI_LidarGroundTruth.mat','bboxGroundTruth');
+    data = l
     Labels = timetable2table(bboxGroundTruth);
     Labels = Labels(:,2:end);
 
