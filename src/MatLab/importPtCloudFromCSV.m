@@ -1,4 +1,4 @@
-function ptcell = tst(filepath)
+function ptcell = importPtCloudFromCSV(filepath)
 %z = csvread('C:\Users\wesle\Documents\PointPillars\lvxsample2.csv' , 1, 7);
     [Timestamp, X1, Y1, Z1, Reflectivity] = importfile(filepath , 2);
     hundredmsfactor = 100000000;

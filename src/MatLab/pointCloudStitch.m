@@ -1,5 +1,5 @@
 function ptCloudScene = pointCloudStitch(filepath)
-    pointClouds = tst(filepath);
+    pointClouds = importPtCloudFromCSV(filepath);
     %load(dataFile);
 
     % Extract two consecutive point clouds and use the first point cloud as
