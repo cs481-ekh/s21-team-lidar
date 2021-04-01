@@ -1,4 +1,4 @@
-x = tst("C:\Users\andres\Documents\PointPillars\lvxsample2-1.csv");
+x = tst("C:\Users\wesle\Documents\PointPillars\LabRoom.csv");
 
 width = 1024*5;
 height = 64*5;
@@ -31,10 +31,9 @@ for cloudnum = 1.0:1:size(x,1)
     ptCloud = pointCloud(points, 'Intensity', intensityMap);
     pcshow(ptCloud);
     x{cloudnum,1} = [];
-    %if (mod((cloudnum - 13),11) ~= 0)
-    name = sprintf( '%05d', cloudnum );
-    ptCloudToPCD(ptCloud, "C:\Users\andres\Documents\PointPillars\Sample", "Sample_" + name);
-    %end
+        name = sprintf( '%05d', cloudnum );
+        ptCloudToPCD(ptCloud, "C:\Users\wesle\Documents\PointPillars\Sample", "Sample_" + name);
+   
     
 end
 
