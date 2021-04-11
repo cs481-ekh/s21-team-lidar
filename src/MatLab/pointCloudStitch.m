@@ -14,7 +14,7 @@ function ptCloudScene = pointCloudStitch(filepath)
     tform = pcregistericp(moving, fixed, 'Metric','pointToPlane','Extrapolate', true);
     ptCloudAligned = pctransform(ptCloudCurrent,tform);
 
-    mergeSize = 0.015;
+    mergeSize = 0.015; 
     ptCloudScene = pcmerge(ptCloudRef, ptCloudAligned, mergeSize);
 
     % % Visualize the input images.
