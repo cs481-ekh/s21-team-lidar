@@ -1,3 +1,4 @@
+
 function success = organizedpointcloud(inputPath, outputPath, filename)
     x = importPtCloudFromCSV(inputPath);
 
@@ -7,6 +8,7 @@ function success = organizedpointcloud(inputPath, outputPath, filename)
 
     totalClouds = size(x,1);
     duration = seconds(totalClouds/10);
+
 
     for cloudnum = 1.0:1:size(x,1)
         points = zeros(height,width,3);
@@ -39,6 +41,7 @@ function success = organizedpointcloud(inputPath, outputPath, filename)
 
     end
     success = 1;
+
 end
 
 

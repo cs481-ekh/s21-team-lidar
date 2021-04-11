@@ -48,7 +48,7 @@ function ptCloudScene = pointCloudStitch(filepath)
     hAxes.CameraViewAngleMode = 'auto';
 %   hScatter = hAxes.Children;
 
-    for i = 3:length(pointClouds)
+    for i = 3:1:length(pointClouds)
         ptCloudCurrent = pointClouds{i};
 
         % Use previous moving point cloud as reference.
