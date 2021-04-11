@@ -1,4 +1,4 @@
-[Timestamp] = importfile('C:\Users\andres\Documents\PointPillars\outside.csv' , 2);
+[Timestamp] = importfile('C:\Users\andres\Documents\PointPillars\eastWard.csv' , 2);
 
 
 function [Timestamp] = importfile(filename, dataLines)
@@ -53,3 +53,4 @@ tbl = readtable(filename, opts);
 Timestamp = tbl.Timestamp;
 
 end
+

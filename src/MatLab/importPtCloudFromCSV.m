@@ -6,7 +6,6 @@ function ptcell = importPtCloudFromCSV(filepath)
     numberOfElements = numel(Timestamp);
     numberOfFrames = fix(numberOfElements / fps); 
 
-    ptcell = cell(numberOfFrames,1);
 %     for v = 1.0:1:numberOfFrames
 %         points = [X1((v-1)*(fps)+1:v*fps),Y1((v-1)*(fps)+1:v*fps),Z1((v-1)*(fps)+1:v*fps)];
 %         ptCloud = pointCloud(points, 'Intensity' , Reflectivity((v-1)*(fps)+1:v*fps));
@@ -103,3 +102,4 @@ Y1 = tbl.Y1;
 Z1 = tbl.Z1;
 Reflectivity = tbl.Reflectivity;
 end
+
