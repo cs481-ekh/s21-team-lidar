@@ -1,4 +1,5 @@
 function success = pp() 
+    f = waitbar(0,'Loading Point Cloud Data...');
     mkdir("C:\Users\andres\Documents\PointPillars");
     outputFolder = fullfile("C:\Users\andres\Documents\PointPillars");
     pretrainedNetURL = 'https://ssd.mathworks.com/supportfiles/lidar/data/trainedPointPillars.zip';
@@ -38,7 +39,8 @@ function success = pp()
 
     % Define pillar extraction parameters.
     gridParams = {{xMin,yMin,zMin},{xMax,yMax,zMax},{xStep,yStep,dsFactor},{Xn,Yn}};
-    
+    waitbar(.1,'Processing Point Cloud Data...');
+
     % Load the calibration parameters.
     fview = load('calibrationValues.mat');
     [inputPointCloud, boxLabels] = createFrontViewFromLidarData(lidarData, Labels, gridParams, fview); 
@@ -55,7 +57,7 @@ function success = pp()
 
     trainData = inputPointCloud(shuffledIndices(1:idx),:);
     testData = inputPointCloud(shuffledIndices(idx+1:end),:);
-
+    
     trainLabels = boxLabels(shuffledIndices(1:idx),:);
     testLabels = boxLabels(shuffledIndices(idx+1:end),:);
 

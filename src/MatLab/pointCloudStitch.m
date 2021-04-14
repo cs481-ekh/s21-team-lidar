@@ -1,12 +1,13 @@
 function ptCloudScene = pointCloudStitch(filepath)
+    f = waitbar(0,'Loading Point Clouds...');
     pointClouds = importPtCloudFromCSV(filepath);
     %load(dataFile);
-
+    waitbar(0, f,'Stitching Point Clouds...');
     % Extract two consecutive point clouds and use the first point cloud as
     % reference.
     ptCloudRef = pointClouds{1};
     ptCloudCurrent = pointClouds{2};
-
+    
     gridSize = 0.1;
     fixed = pcdownsample(ptCloudRef, 'gridAverage', gridSize);
     moving = pcdownsample(ptCloudCurrent, 'gridAverage', gridSize);
@@ -42,10 +43,10 @@ function ptCloudScene = pointCloudStitch(filepath)
     accumTform = tform; 
 
     figure
-    hAxes = pcshow(ptCloudScene, 'VerticalAxis','Y', 'VerticalAxisDir', 'Down');
+    %hAxes = pcshow(ptCloudScene, 'VerticalAxis','Y', 'VerticalAxisDir', 'Down');
     title('Updated world scene')
     % Set the axes property for faster rendering
-    hAxes.CameraViewAngleMode = 'auto';
+    %hAxes.CameraViewAngleMode = 'auto';
 %   hScatter = hAxes.Children;
 
     for i = 3:1:length(pointClouds)
@@ -72,6 +73,7 @@ function ptCloudScene = pointCloudStitch(filepath)
 %         hScatter.ZData = ptCloudScene.Location(:,3);
 %     `   hScatter.CData = ptCloudScene.Color;
 %         drawnow('limitrate')
+        waitbar(i/length(pointClouds), f,'Stitching Point Clouds...');
     end
 
     % During the recording, the Kinect was pointing downward. To visualize the
@@ -89,5 +91,6 @@ function ptCloudScene = pointCloudStitch(filepath)
     % xlabel('X (m)')
     % ylabel('Y (m)')
     % zlabel('Z (m)')
-     pcshow(ptCloudScene);
+    % pcshow(ptCloudScene);
+     delete(f);
 end
