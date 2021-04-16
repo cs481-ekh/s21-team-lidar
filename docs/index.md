@@ -1,9 +1,9 @@
 ## Livox Lidar Stitching and Object Detection Suite
 
 ### Members
-* Joel Starr-Avalos
-* Wesley Wong
-* Andres Guzman
+Joel Starr-Avalos  
+Wesley Wong  
+Andres Guzman  
 
 ### Abstract
 The Livox Lidar Stitching and Object Detection Suite is a Matlab application that takes .csv files of Point Clouds and can output stitched scenes or detect objects via a Point Pillars 
