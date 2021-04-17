@@ -1,4 +1,3 @@
-## Livox Lidar Stitching and Object Detection Suite
 
 ### Members
 Joel Starr-Avalos  
