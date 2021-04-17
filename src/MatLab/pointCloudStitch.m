@@ -1,6 +1,7 @@
 function ptCloudScene = pointCloudStitch(filepath)
     f = waitbar(0,'Loading Point Clouds...');
     pointClouds = importPtCloudFromCSV(filepath);
+    %pcshow(pointClouds{1})
     %load(dataFile);
     waitbar(0, f,'Stitching Point Clouds...');
     % Extract two consecutive point clouds and use the first point cloud as
@@ -42,9 +43,7 @@ function ptCloudScene = pointCloudStitch(filepath)
     % Store the transformation object that accumulates the transformation.
     accumTform = tform; 
 
-    figure
-    %hAxes = pcshow(ptCloudScene, 'VerticalAxis','Y', 'VerticalAxisDir', 'Down');
-    title('Updated world scene')
+    %hAxes = pcshow(ptCloudScene, 'VerticalAxis','Y', 'VerticalAxisDir', 'Down'); 
     % Set the axes property for faster rendering
     %hAxes.CameraViewAngleMode = 'auto';
 %   hScatter = hAxes.Children;
