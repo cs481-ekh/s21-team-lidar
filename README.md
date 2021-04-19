@@ -40,3 +40,4 @@ To created a stitched scene, click Stitch Point Clouds. This will load points cl
 
 To detect objects in the point cloud sequence, click Detect Objects. This will load point clouds from the .csv, convert them to organized point clouds, write them to .pcd files, download the neural network and detect objects via Machine learning. This will take considerable time and the resulting files will take up some hard drive space. When finished, a Matlab figure of detected objects in bounding boxes will appear.
 
+![image](https://user-images.githubusercontent.com/32054828/115301572-9cff4d00-a11e-11eb-8f97-eba406af77ac.png)
