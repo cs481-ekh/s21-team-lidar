@@ -44,7 +44,7 @@ Before objects can be detected in a any sequence of point clouds, we have to lab
 
 With ground truth data and organized point clouds, we can detect data. The pp function downloads the network and then preprocesses the point cloud data, creating a standard front view. It then randomizes the training data, then starts training. The Point Pillars algorithm actually converts the 3D point cloud in a 2D format with points arranged into vertical columns or "pillars". After the configured and trained it can finally draw bounding boxes around objects it has detected.
 
-![image](https://user-images.githubusercontent.com/32054828/115301629-b56f6780-a11e-11eb-9d95-266d2cd17298.png)
+![image](https://user-images.githubusercontent.com/32054828/115302072-3cbcdb00-a11f-11eb-9480-2008c2ff1c3c.png)
 
 
 #### GUI
