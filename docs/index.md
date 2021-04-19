@@ -32,10 +32,10 @@ To create a complete 3d enviroment from a sequence of point clouds, each point c
 
 ![image](https://user-images.githubusercontent.com/32054828/115096181-4ce77700-9ee1-11eb-8928-a6f22264b90d.png)
 
-An unstitched point cloud of a road
+An unstitched point cloud of a road  
 ![image](https://user-images.githubusercontent.com/32054828/115098349-e0727500-9eec-11eb-9ce2-84c37f2a4d2d.png)  
 
-A fully stitched point cloud sequence
+A fully stitched point cloud sequence  
 ![image](https://user-images.githubusercontent.com/32054828/115099866-f8022b80-9ef5-11eb-8924-edbeb6023725.png)
 
 #### Object Detection
