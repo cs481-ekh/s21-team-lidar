@@ -35,6 +35,12 @@ An unstitched point cloud of a road
 ![image](https://user-images.githubusercontent.com/32054828/115099866-f8022b80-9ef5-11eb-8924-edbeb6023725.png)
 A fully stitched point cloud sequence
 
+#### Object Detection
+Before objects can be detected in a any sequence of point clouds, we have to label data manually for the machine learning algorithm to be trained on. This 'ground truth data' is labelled via the Livox Lidar Labeller. After we have extracted point clouds from .csv files, we can output each cloud to the .pcd format with matlab pcwrite function, then open a Lidar Labelling session to draw bounding boxes around objects like signs and vehicles. We can then save this data and use it for detection.
+![image](https://user-images.githubusercontent.com/32054828/115167245-13934080-a074-11eb-83da-f24914473a16.png)
+
+With ground truth data and organized point clouds, we can detect data. The pp function downloads the network and then preprocesses the point cloud data, creating a standard front view. It then randomizes the training data, then starts training. The Point Pillars algorithm actually converts the 3D point cloud in a 2D format with points arranged into vertical columns or "pillars". After the configured and trained it can finally draw bounding boxes around objects it has detected.
+
 
 #### GUI
 The program uses Matlab's built in App Designer for building the GUI. As you can see it's quite basic, just a few buttons and some dialog prompts.
