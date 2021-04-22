@@ -3,8 +3,8 @@ function ptcellArrayToPCD(ptCell, path, name)
 %   Converts a cell array of point clouds to a PCD sequence in a new folder
 %   ptcell : 
 mkdir(path);
-for v = 1:size(ptCell,2)
-    pcwrite(ptCell{1,v}, path + '\' + name + '_' + v + '.pcd', 'Encoding', 'compressed')
+for v = 1:size(ptCell)
+    pcwrite(ptCell{v,1}, path + '\' + name + '_' + v + '.pcd', 'Encoding', 'compressed')
 end
 
 end
