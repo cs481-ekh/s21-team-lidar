@@ -1,7 +1,9 @@
-
+%Creates organized point cloud from unorganized point cloud
 function success = organizedpointcloud(inputPath, outputPath, filename)
     x = importPtCloudFromCSV(inputPath);
 
+    %Resolution of the "image" reduce for faster processing, increase for
+    %higher quality
     width = 1024*5;
     height = 64*5;
 
@@ -9,7 +11,8 @@ function success = organizedpointcloud(inputPath, outputPath, filename)
     totalClouds = size(x,1);
     duration = seconds(totalClouds/10);
 
-
+    %Loops to place each point in a point cloud in the relative x,y,z in an
+    %organized point cloud
     for cloudnum = 1.0:1:size(x,1)
         points = zeros(height,width,3);
         intensityMap = zeros(height,width);
@@ -34,10 +37,9 @@ function success = organizedpointcloud(inputPath, outputPath, filename)
         ptCloud = pointCloud(points, 'Intensity', intensityMap);
         pcshow(ptCloud);
         x{cloudnum,1} = [];
-        %if (mod((cloudnum - 13),11) ~= 0)
         name = sprintf( '%05d', cloudnum );
         ptCloudToPCD(ptCloud, outputPath, filename +"_" + name);
-        %end
+        
 
     end
     success = 1;
